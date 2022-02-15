@@ -25,8 +25,9 @@ export class CdkS3CopyObjectStack extends Stack {
       },
     });
 
+    console.log("Bucket ARN: %s", bucket.bucketArn);
     const policyStatement = new iam.PolicyStatement();
-    policyStatement.addActions("*");
+    policyStatement.addActions("s3:*");
     policyStatement.addResources("*");
 
     lambdaFunction.role?.attachInlinePolicy(
